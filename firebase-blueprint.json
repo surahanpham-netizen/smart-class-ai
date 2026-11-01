@@ -1,0 +1,123 @@
+{
+  "entities": {
+    "users": {
+      "title": "User",
+      "description": "User profile with role-based access",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "name": { "type": "string" },
+        "role": { "type": "string", "enum": ["ADMIN", "TEACHER", "STUDENT", "PARENT"] },
+        "avatar": { "type": "string" },
+        "phone": { "type": "string" },
+        "gender": { "type": "string" },
+        "dob": { "type": "string" },
+        "address": { "type": "string" },
+        "studentId": { "type": "string" },
+        "teacherId": { "type": "string" },
+        "department": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["email", "name", "role"]
+    },
+    "classes": {
+      "title": "ClassRoom",
+      "description": "School classroom entity",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "gradeLevel": { "type": "number" },
+        "academicYear": { "type": "string" },
+        "homeroomTeacherId": { "type": "string" },
+        "homeroomTeacherName": { "type": "string" },
+        "room": { "type": "string" },
+        "code": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "archived"] }
+      },
+      "required": ["name", "gradeLevel"]
+    },
+    "students": {
+      "title": "Student",
+      "description": "Student record in a class",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "studentCode": { "type": "string" },
+        "name": { "type": "string" },
+        "classId": { "type": "string" },
+        "className": { "type": "string" },
+        "gender": { "type": "string" },
+        "dob": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["studentCode", "name", "classId"]
+    },
+    "questions": {
+      "title": "Question",
+      "description": "Exam/Quiz question bank item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "subject": { "type": "string" },
+        "gradeLevel": { "type": "number" },
+        "topic": { "type": "string" },
+        "type": { "type": "string" },
+        "prompt": { "type": "string" },
+        "difficulty": { "type": "string" }
+      },
+      "required": ["subject", "prompt", "type"]
+    },
+    "quizzes": {
+      "title": "Quiz",
+      "description": "Quiz or exam test paper",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "classId": { "type": "string" },
+        "title": { "type": "string" },
+        "subject": { "type": "string" },
+        "durationMinutes": { "type": "number" },
+        "status": { "type": "string" }
+      },
+      "required": ["title", "subject", "durationMinutes"]
+    },
+    "assignments": {
+      "title": "Assignment",
+      "description": "Homework or class assignment",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "classId": { "type": "string" },
+        "title": { "type": "string" },
+        "subject": { "type": "string" },
+        "dueDate": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["title", "subject", "classId"]
+    },
+    "attendance": {
+      "title": "AttendanceRecord",
+      "description": "Class daily or period attendance",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "classId": { "type": "string" },
+        "date": { "type": "string" },
+        "period": { "type": "string" },
+        "teacherId": { "type": "string" }
+      },
+      "required": ["classId", "date"]
+    },
+    "subjects": {
+      "title": "Subject",
+      "description": "Curriculum subject list",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" }
+      },
+      "required": ["name"]
+    }
+  }
+}
